@@ -1,0 +1,66 @@
+.navbar-brand.logo{
+    margin-top: -4px;
+}
+.login-menu{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 999;
+}
+.login-menu > div{
+  margin: auto;
+  padding: 3px;
+}
+
+li.big{
+  height:50px;
+}
+
+.big .glyphicon{
+  font-size: 25px;
+  margin-top: -3px;
+}
+
+.circular {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+.navbar .avatar{
+    padding: 8px;
+}
+
+.applications .dropdown ul{
+    list-style-type: none;
+    padding: 5px 20px;
+}
+
+.applications .dropdown ul li{
+    white-space: nowrap;
+    padding: 5px;
+}
+
+.applications .dropdown ul li a{
+    color: #000;
+    cursor: pointer;
+}
+
+.toolbar-search input[type="text"] {
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+}
+
+.toolbar-search input[type="text"] {
+    width: 150px;
+}
+
+.toolbar-search input[type="text"]:focus {
+   width: 300px;
+}

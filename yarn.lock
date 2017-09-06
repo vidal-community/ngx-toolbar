@@ -791,8 +791,8 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000725"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000725.tgz#20f2313d79401e02f61840f39698bc8c558811a6"
+  version "1.0.30000726"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000726.tgz#9bb742f8d026a62df873bc03c06843d2255b60d7"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2852,6 +2852,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jsrsasign@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/jsrsasign/-/jsrsasign-8.0.3.tgz#04017b1452f5f7ef6cfff053fede4d397afc8910"
+
 karma-chrome-launcher@~2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/karma-chrome-launcher/-/karma-chrome-launcher-2.1.1.tgz#216879c68ac04d8d5140e99619ba04b59afd46cf"
@@ -3241,17 +3245,13 @@ minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatc
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@0.0.8:
+minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
-
-minimist@~0.0.1:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 mixin-object@^2.0.1:
   version "2.0.1"
@@ -3265,6 +3265,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+moment@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
 ms@0.7.1:
   version "0.7.1"
@@ -3306,6 +3310,12 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ngx-bootstrap@next:
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.0-beta.4.tgz#ae15c7cce455f40ea09bee48d3c861c511bfd9be"
+  dependencies:
+    moment "^2.18.1"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -4042,12 +4052,12 @@ postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.
     supports-color "^3.2.3"
 
 postcss@^6.0.1:
-  version "6.0.10"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.10.tgz#c311b89734483d87a91a56dc9e53f15f4e6e84e4"
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.11.tgz#f48db210b1d37a7f7ab6499b7a54982997ab6f72"
   dependencies:
     chalk "^2.1.0"
     source-map "^0.5.7"
-    supports-color "^4.2.1"
+    supports-color "^4.4.0"
 
 prepend-http@^1.0.0:
   version "1.0.4"
@@ -4464,7 +4474,7 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^5.4.2:
+rxjs@^5.4.2, rxjs@^5.4.3:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
   dependencies:
@@ -4969,7 +4979,7 @@ supports-color@^3.1.1, supports-color@^3.1.2, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-supports-color@^4.0.0, supports-color@^4.2.1:
+supports-color@^4.0.0, supports-color@^4.2.1, supports-color@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"
   dependencies:
@@ -5335,6 +5345,41 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vidal-ngx-discovery@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vidal-ngx-discovery/-/vidal-ngx-discovery-0.0.4.tgz#dd49b458bf75779b16438648b6a7b3178aab265e"
+  dependencies:
+    "@angular/animations" "^4.2.4"
+    "@angular/common" "^4.2.4"
+    "@angular/compiler" "^4.2.4"
+    "@angular/core" "^4.2.4"
+    "@angular/forms" "^4.2.4"
+    "@angular/http" "^4.2.4"
+    "@angular/platform-browser" "^4.2.4"
+    "@angular/platform-browser-dynamic" "^4.2.4"
+    "@angular/router" "^4.2.4"
+    core-js "^2.4.1"
+    rxjs "^5.4.2"
+    zone.js "^0.8.14"
+
+vidal-ngx-sesame@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/vidal-ngx-sesame/-/vidal-ngx-sesame-0.0.7.tgz#fe34293c1716959f61057eb543e8983a9d3c916f"
+  dependencies:
+    "@angular/animations" "^4.2.4"
+    "@angular/common" "^4.2.4"
+    "@angular/compiler" "^4.2.4"
+    "@angular/core" "^4.2.4"
+    "@angular/forms" "^4.2.4"
+    "@angular/http" "^4.2.4"
+    "@angular/platform-browser" "^4.2.4"
+    "@angular/platform-browser-dynamic" "^4.2.4"
+    "@angular/router" "^4.2.4"
+    core-js "^2.4.1"
+    jsrsasign "^8.0.3"
+    rxjs "^5.4.3"
+    zone.js "^0.8.14"
+
 vlq@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/vlq/-/vlq-0.2.2.tgz#e316d5257b40b86bb43cb8d5fea5d7f54d6b0ca1"
@@ -5530,16 +5575,9 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
-ws@1.1.2:
+ws@1.1.2, ws@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.2.tgz#8a244fa052401e08c9886cf44a85189e1fd4067f"
-  dependencies:
-    options ">=0.0.5"
-    ultron "1.0.x"
-
-ws@^1.0.1:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.4.tgz#57f40d036832e5f5055662a397c4de76ed66bf61"
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"

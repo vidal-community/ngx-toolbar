@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo navbar-brand" routerLink="">
+        <img [alt]="applicationName" [src]="logo">
+      </a>
+      <a class="application-name navbar-brand" routerLink="">
+        <span>{{applicationName}}</span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ng-content></ng-content>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="toolbar-search">
+          <div class="navbar-form navbar-collapse" label="Rechercher" icon="glyphicon-search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Rechercher" [(ngModel)]="search" (keyup.enter)="showSearch()">
+            </div>
+            <span class="btn-group" dropdown keyboardNav="true">
+              <a class="btn btn-default"
+                dropdownToggle
+                (click)="updateSearch(search)"
+                #searchBtn><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+              <ul class="search-results dropdown-menu" role="menu" *dropdownMenu>
+                  <li *ngFor="let search of searches | async">
+                    <a class="dropdown-item" href="{{search.url}}">
+                      {{search.shortDescription}}
+                    </a>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </li>
+
+        <li class="big applications" dropdown keyboardNav="true">
+          <a dropdownToggle (click)="updateApps()"><span class="glyphicon glyphicon-th"></span></a>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li *ngFor="let app of applications | async">
+              <a href="{{app.url}}">
+                <img *ngIf="app.meta?.icon" src="{{app.url + app.meta.icon}}"/>
+                {{app.shortDescription}}
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li id="not-logged" dropdown class="big" *ngIf="!username" >
+          <a dropdownToggle id="login-dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+          <div *dropdownMenu aria-labelledby="login-dropdown" class="login-menu dropdown-menu" role="menu" (keyup.enter)="connect()">
+            <div>
+              <input [(ngModel)]="login" placeholder="Login" />
+            </div>
+            <div>
+              <input [(ngModel)]="password" type="password" placeholder="Mot de passe" />
+            </div>
+            <div><button class="btn btn-primary" (click)="connect()">Connexion</button></div>
+          </div>
+        </li>
+
+        <li id="logged" dropdown *ngIf="username">
+          <a dropdownToggle class="avatar" id="user-dropdown">
+            <div class="circular userIcon" [ngStyle]="userIcon" placement="left"></div>
+          </a>
+
+          <div *dropdownMenu class="dropdown-menu" role="menu" style="padding: 15px;">
+            <button class="btn btn-danger btn-s" (click)="logout()"><span class="glyphicon glyphicon-off"></span>
+                Déconnexion
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
