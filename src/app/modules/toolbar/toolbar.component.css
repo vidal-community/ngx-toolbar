@@ -16,9 +16,13 @@ li.big{
   height:50px;
 }
 
-.big .glyphicon{
+.big .glyphicon {
   font-size: 25px;
   margin-top: -3px;
+}
+
+.todos .dropdown-menu {
+  min-width: 400px;
 }
 
 .circular {
@@ -63,4 +67,8 @@ li.big{
 
 .toolbar-search input[type="text"]:focus {
    width: 300px;
+}
+
+.pointer{
+  cursor: pointer;
 }

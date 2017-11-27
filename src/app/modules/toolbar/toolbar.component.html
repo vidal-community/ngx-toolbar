@@ -34,7 +34,19 @@
           </div>
         </li>
 
-        <li class="big applications" dropdown keyboardNav="true">
+        <li class="big todos pointer" dropdown keyboardNav="true">
+          <a dropdownToggle (click)="updateTodos()"><span class="glyphicon glyphicon-list"></span></a>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li *ngFor="let todo of todos | async">
+              <a href="{{todo.url}}">
+                {{todo.shortDescription}}
+                <span class="badge pull-right">{{todo.meta.counter | async}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="big applications pointer" dropdown keyboardNav="true">
           <a dropdownToggle (click)="updateApps()"><span class="glyphicon glyphicon-th"></span></a>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li *ngFor="let app of applications | async">

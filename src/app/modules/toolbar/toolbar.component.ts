@@ -1,10 +1,10 @@
-
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { Observable } from 'rxjs/Rx';
-import { DiscoveryService, Service } from 'vidal-ngx-discovery';
-import { SesameService } from 'vidal-ngx-sesame';
+import {Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {Observable} from 'rxjs/Rx';
+import {DiscoveryService, Service} from 'vidal-ngx-discovery';
+import {SesameService} from 'vidal-ngx-sesame';
+import {Http} from "@angular/http";
 
 const USER_DEFAULT_ICON = {
   'background': 'url(assets/images/photo.png) no-repeat center',
@@ -28,12 +28,14 @@ export class ToolbarComponent implements OnInit {
   password: string;
   search = '';
   applications: Observable<Service[]>;
+  todos: Observable<Service[]>;
   searches: Observable<Service[]>;
 
-  constructor( private sesameService: SesameService,
-    private discovery: DiscoveryService,
-    private router: Router,
-    private location: Location) {
+  constructor(private sesameService: SesameService,
+              private discovery: DiscoveryService,
+              private router: Router,
+              private location: Location,
+              private http: Http) {
 
     this.sesameService.userInfo().subscribe(userInfo => {
       if (userInfo === undefined) {
@@ -91,6 +93,28 @@ export class ToolbarComponent implements OnInit {
       .map(apps =>
         apps.sort((s1, s2) => s1.shortDescription.localeCompare(s2.shortDescription))
       );
+  }
+
+  updateTodos(): void {
+    this.todos = this.discovery
+      .services('todolist')
+      .map(todos => {
+        todos.forEach(todo => todo.meta.counter = this.countTodo(todo));
+        todos.sort((s1, s2) => s1.shortDescription.localeCompare(s2.shortDescription));
+        return todos;
+      });
+  }
+
+  countTodo(todo: any): Observable<string> {
+    let counterObservable;
+
+    if (todo.meta != null && todo.meta.counters != null) {
+      counterObservable = this.http.get(todo.meta.counters).map(r => r.text());
+    } else {
+      counterObservable = Observable.of('');
+    }
+
+    return Observable.of('...').concat(counterObservable);
   }
 
   updateSearch(value): void {
