@@ -19,9 +19,9 @@ const USER_DEFAULT_ICON = {
 export class ToolbarComponent implements OnInit {
   @ViewChild('searchBtn') searchBtn: ElementRef;
 
-  @Input() logo: string;
   @Input() applicationName: string;
 
+  logo: string;
   username: string;
   userIcon = USER_DEFAULT_ICON;
   login: string;
@@ -56,7 +56,9 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.logo = 'assets/images/logo_vidal_2017.png';
+  }
 
   public connect() {
     this.sesameService.login(this.login, this.password);
