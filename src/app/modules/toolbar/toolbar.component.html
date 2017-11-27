@@ -4,7 +4,10 @@
       <a class="logo navbar-brand" routerLink="">
         <img [alt]="applicationName" [src]="logo">
       </a>
-      <a class="application-name navbar-brand" routerLink="">
+      <a class="logo navbar-brand" routerLink="">
+        <img [alt]="applicationName" [src]="appLogo">
+      </a>
+      <a class="application-name navbar-brand pointer" routerLink="">
         <span>{{applicationName}}</span>
       </a>
     </div>
@@ -38,7 +41,7 @@
           <a dropdownToggle (click)="updateTodos()"><span class="glyphicon glyphicon-list"></span></a>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li *ngFor="let todo of todos | async">
-              <a href="{{todo.url}}">
+              <a href="{{todo.url}}" *ngIf="todo.meta.display | async">
                 {{todo.shortDescription}}
                 <span class="badge pull-right">{{todo.meta.counter | async}}</span>
               </a>
@@ -50,10 +53,13 @@
           <a dropdownToggle (click)="updateApps()"><span class="glyphicon glyphicon-th"></span></a>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li *ngFor="let app of applications | async">
-              <a href="{{app.url}}">
+              <a href="{{app.url}}" *ngIf="showAllApps || (app.meta.display | async)">
                 <img *ngIf="app.meta?.icon" src="{{app.url + app.meta.icon}}"/>
                 {{app.shortDescription}}
               </a>
+            </li>
+            <li class="appbar-more" *ngIf="!showAllApps && shouldDisplayMoreApps | async">
+              <a (click)="displayAllApps($event, applications)"></a>
             </li>
           </ul>
         </li>

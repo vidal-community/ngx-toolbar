@@ -4,7 +4,7 @@ import {Location} from '@angular/common';
 import {Observable} from 'rxjs/Rx';
 import {DiscoveryService, Service} from 'vidal-ngx-discovery';
 import {SesameService} from 'vidal-ngx-sesame';
-import {Http} from "@angular/http";
+import {Http} from '@angular/http';
 
 const USER_DEFAULT_ICON = {
   'background': 'url(assets/images/photo.png) no-repeat center',
@@ -20,12 +20,15 @@ export class ToolbarComponent implements OnInit {
   @ViewChild('searchBtn') searchBtn: ElementRef;
 
   @Input() applicationName: string;
+  @Input() appLogo: string;
 
   logo: string;
   username: string;
   userIcon = USER_DEFAULT_ICON;
   login: string;
   password: string;
+  showAllApps = false;
+  shouldDisplayMoreApps: Promise<boolean>;
   search = '';
   applications: Observable<Service[]>;
   todos: Observable<Service[]>;
@@ -88,11 +91,27 @@ export class ToolbarComponent implements OnInit {
   }
 
   updateApps(): void {
+    this.showAllApps = false;
     this.applications = this.discovery
       .services('APPLICATION')
-      .map(apps =>
-        apps.sort((s1, s2) => s1.shortDescription.localeCompare(s2.shortDescription))
+      .map(apps => {
+          apps.forEach(app => app.meta.display = this.isDisplayed(app));
+          apps.sort((s1, s2) => s1.shortDescription.localeCompare(s2.shortDescription));
+          this.shouldDisplayMoreApps = this.hasHiddenApps(apps);
+          return apps;
+        }
       );
+  }
+
+  displayAllApps(event: Event, applications: any[]) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.showAllApps = true;
+  }
+
+  async hasHiddenApps(applications: Service[]): Promise<boolean> {
+    const hiddenFlags = await  Promise.all(applications.map(app => app.meta.display));
+    return hiddenFlags.filter(flag => flag === false).length !== 0;
   }
 
   updateTodos(): void {
@@ -100,9 +119,18 @@ export class ToolbarComponent implements OnInit {
       .services('todolist')
       .map(todos => {
         todos.forEach(todo => todo.meta.counter = this.countTodo(todo));
+        todos.forEach(todo => todo.meta.display = this.isDisplayed(todo));
         todos.sort((s1, s2) => s1.shortDescription.localeCompare(s2.shortDescription));
         return todos;
       });
+  }
+
+  async isDisplayed(service): Promise<boolean> {
+    if (service == null || service.meta == null || service.meta.roles == null) {
+      return Promise.resolve(true);
+    }
+
+    return await this.sesameService.hasAnyRoles(service.meta.roles).first().toPromise();
   }
 
   countTodo(todo: any): Observable<string> {

@@ -72,3 +72,10 @@ li.big{
 .pointer{
   cursor: pointer;
 }
+
+.appbar-more a {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfhCAQHOTMaxUQ4AAAAdklEQVQ4y+2QsQ2AIBBFX0JHLN2ACZQwhI7BFroFW7gFQ1DaUTKFhYkalUhlLHzl3cv9u4OfLyBoaJkL7Z4KNAGPeZQNnoBeUyyRCZWVFRMRi9hLkoGEo77INY7EgCTTGg8tyZgZcxP+vOjpvLJXbHR05fLP+ywwhxo+pNmFkwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wOC0wNFQwOTo1NzoxOSswMjowMCUVAJgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDgtMDRUMDk6NTc6MTkrMDI6MDBUSLgkAAAAAElFTkSuQmCC');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 1em;
+}
